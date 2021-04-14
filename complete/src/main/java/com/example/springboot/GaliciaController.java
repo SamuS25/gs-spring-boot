@@ -27,4 +27,13 @@ public class GaliciaController {
         public List<Galicia> list() {
                 return cities_list;
          }
+
+        @GetMapping("/cities/{id}")
+        public Galicia details(@PathVariable int id) {
+                try {
+                        return cities_list.get(id);
+                } catch (IndexOutOfBoundsException error) {
+                        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "City Not Found");
+                }
+        }
 }
