@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 @RestController
 public class GaliciaController {
