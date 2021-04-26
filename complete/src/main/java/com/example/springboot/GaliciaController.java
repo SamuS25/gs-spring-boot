@@ -36,4 +36,62 @@ public class GaliciaController {
                         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "City Not Found");
                 }
         }
+
+        @GetMapping("/names")
+        public List<String> name() {
+                try {
+                    List<String> cities = new ArrayList<String>();
+                    for (int i = 0; i < cities_list.size(); i++) {
+                        if (!cities.contains(cities_list.get(i).getName())) {
+                            cities.add(cities_list.get(i).getName());
+                        }
+                    }
+                    return cities;
+                } catch (IndexOutOfBoundsException error) {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Names Not Found");
+                }
+        }
+
+        @GetMapping("/names/{name}")
+        public Galicia details_name(@PathVariable String name) {
+                int i;
+                for (i=0; i < cities_list.size(); i++) {
+                    if (cities_list.get(i).getName().equals(name)) {
+                        return cities_list.get(i);
+                    }
+                }
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Name Not Found");
+        }
+
+        @GetMapping("/provinces")
+        public List<String> province() {
+                try {
+                    List<String> cities = new ArrayList<String>();
+                    for (int i = 0; i < cities_list.size(); i++) {
+                        if (!cities.contains(cities_list.get(i).getProvince())) {
+                            cities.add(cities_list.get(i).getProvince());
+                        }
+                    }
+                    return cities;
+                } catch (IndexOutOfBoundsException error) {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provinces Not Found");
+                }
+        }
+
+        @GetMapping("/provinces/{province}")
+        public List<Galicia> details_province(@PathVariable String province) {
+                try {
+                    List<Galicia> cities = new ArrayList<Galicia>();
+                    for (int i = 0; i < cities_list.size(); i++) {
+                        Galicia ciudad = cities_list.get(i);
+                        if (cities_list.get(i).getProvince().equals(province)) {
+                            cities.add(cities_list.get(i));
+                        }
+                    }
+                    return cities;
+                } catch (IndexOutOfBoundsException error) {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Province Not Found");
+                }
+        }
+
 }
