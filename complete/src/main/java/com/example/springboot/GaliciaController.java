@@ -78,4 +78,20 @@ public class GaliciaController {
                 }
         }
 
+        @GetMapping("/provinces/{province}")
+        public List<Galicia> details_province(@PathVariable String province) {
+                try {
+                    List<Galicia> cities = new ArrayList<Galicia>();
+                    for (int i = 0; i < cities_list.size(); i++) {
+                        Galicia ciudad = cities_list.get(i);
+                        if (cities_list.get(i).getProvince().equals(province)) {
+                            cities.add(cities_list.get(i));
+                        }
+                    }
+                    return cities;
+                } catch (IndexOutOfBoundsException error) {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Province Not Found");
+                }
+        }
+
 }
