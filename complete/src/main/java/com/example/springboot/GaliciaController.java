@@ -62,4 +62,20 @@ public class GaliciaController {
                 }
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Name Not Found");
         }
+
+        @GetMapping("/provinces")
+        public List<String> province() {
+                try {
+                    List<String> cities = new ArrayList<String>();
+                    for (int i = 0; i < cities_list.size(); i++) {
+                        if (!cities.contains(cities_list.get(i).getProvince())) {
+                            cities.add(cities_list.get(i).getProvince());
+                        }
+                    }
+                    return cities;
+                } catch (IndexOutOfBoundsException error) {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provinces Not Found");
+                }
+        }
+
 }
