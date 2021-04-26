@@ -51,4 +51,15 @@ public class GaliciaController {
                     throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Names Not Found");
                 }
         }
+
+        @GetMapping("/names/{name}")
+        public Galicia details_name(@PathVariable String name) {
+                int i;
+                for (i=0; i < cities_list.size(); i++) {
+                    if (cities_list.get(i).getName().equals(name)) {
+                        return cities_list.get(i);
+                    }
+                }
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Name Not Found");
+        }
 }
