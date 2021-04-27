@@ -449,4 +449,4 @@ The following guides may also be helpful:
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
 
-Práctica de CXT Lab8 finalizada!
+Práctica de CXT Lab8 finalizada! 2.0
